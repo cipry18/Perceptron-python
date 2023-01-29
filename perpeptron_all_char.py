@@ -13,7 +13,6 @@ letter_predict = data_train[data_train.iloc[:, 0] == 6]
 letter_predict = letter_predict.drop(letter_predict.columns[0], axis=1).to_numpy()
 letter_predict = letter_predict / 255
 
-
 for i, l in enumerate(string.ascii_uppercase, start=1):
     print(f"Starting training for letter {l}, index {i}")
     letter = data_train[data_train.iloc[:, 0] == i]
@@ -35,15 +34,21 @@ for i, l in enumerate(string.ascii_uppercase, start=1):
     perceptron_list.append(P)
 
 result = pd.DataFrame(columns=['No_of_predictions'], index=list(string.ascii_uppercase))
-
 result = result.fillna(0)
 
-
+tn, tp, fn, fp = 0, 0, 0, 0
 for i in range(0, 30):
     for perc in perceptron_list:
         prediction = perc.predict(letter_predict[i])
         result.loc[perc.letter, ['No_of_predictions']] += prediction
 
+tn = result[result.iloc[:, 0] == 0].count()
+tp = result.loc['F']
+fn = result[result.iloc[:, 0] != 0].sum()
+fn = fn - tp
+
+accuracy = (tn + tp) / (tp + fp + tn + fn)
+
 result.plot(kind="barh")
 plt.show()
-print(result)
+print(f"The perceptron have an accuracy of {accuracy} out of 30 samples!")
