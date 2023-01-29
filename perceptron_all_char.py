@@ -26,7 +26,7 @@ for i, l in enumerate(string.ascii_uppercase, start=1):
     y_train = letter_all.iloc[:, 0].to_numpy()
     x_train = x_train / 255
 
-    P = Perceptron(letter=l, epochs=150, lr=0.01)
+    P = Perceptron(letter=l, epochs=150, learning_rate=0.01)
     P.train(x_train, y_train)
     plt.imshow(np.resize(P.weights, (28, 28)))
     plt.axis('off')
