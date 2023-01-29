@@ -5,13 +5,13 @@ from matplotlib import pyplot as plt
 
 import main as p
 
-pd.options.mode.chained_assignment = None  # default='warn'
+pd.options.mode.chained_assignment = None
 data_train = pd.read_csv('letters/emnist-letters-train.csv', header=None)
 perceptron_list = list()
 
-letter_T = data_train[data_train.iloc[:, 0] == 6]
-letter_T = letter_T.drop(letter_T.columns[0], axis=1).to_numpy()
-letter_T = letter_T / 255
+letter_predict = data_train[data_train.iloc[:, 0] == 6]
+letter_predict = letter_predict.drop(letter_predict.columns[0], axis=1).to_numpy()
+letter_predict = letter_predict / 255
 
 
 for i, l in enumerate(string.ascii_uppercase, start=1):
@@ -34,9 +34,16 @@ for i, l in enumerate(string.ascii_uppercase, start=1):
     plt.show()
     perceptron_list.append(P)
 
-for i in range(0, 5):
-    print("---test number ", i)
-    for perc in perceptron_list:
-        prediction = perc.predict(letter_T[i])
-        print(perc.letter, ' - ', prediction)
+result = pd.DataFrame(columns=['No_of_predictions'], index=list(string.ascii_uppercase))
 
+result = result.fillna(0)
+
+
+for i in range(0, 30):
+    for perc in perceptron_list:
+        prediction = perc.predict(letter_predict[i])
+        result.loc[perc.letter, ['No_of_predictions']] += prediction
+
+result.plot(kind="barh")
+plt.show()
+print(result)
