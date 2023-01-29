@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8c16e294-0c1d-4a8f-b971-a8dbe0c71ea7" name="Changes" comment="modified perceptron_all_char.py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perpeptron_all_char.py" beforeDir="false" afterPath="$PROJECT_DIR$/perpeptron_all_char.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +39,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1675000241879</updated>
-      <workItem from="1675000243144" duration="7440000" />
+      <workItem from="1675000243144" duration="8029000" />
     </task>
     <task id="LOCAL-00001" summary="modified perceptron_all_char.py">
       <created>1675000848656</created>
@@ -63,7 +62,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675003715176</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="modified perceptron_all_char.py">
+      <created>1675007702827</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675007702827</updated>
+    </task>
+    <task id="LOCAL-00005" summary="modified perceptron_all_char.py">
+      <created>1675007743395</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675007743395</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

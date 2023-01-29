@@ -52,4 +52,4 @@ accuracy = (tn + tp) / (tp + fp + tn + fn)
 
 result.plot(kind="barh")
 plt.show()
-print(f"The perceptron have an accuracy of {accuracy} out of 30 samples!")
+print(f"The perceptron have an accuracy of {accuracy.values()} out of 30 samples!")
