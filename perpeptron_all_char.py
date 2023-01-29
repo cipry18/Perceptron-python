@@ -47,6 +47,7 @@ tp = result.loc['F']
 fn = result[result.iloc[:, 0] != 0].sum()
 fn = fn - tp
 
+
 accuracy = (tn + tp) / (tp + fp + tn + fn)
 
 result.plot(kind="barh")
