@@ -1,101 +1,137 @@
+from time import time
+from typing import TypeVar, Literal, Optional
+from types import TracebackType
+
+import logging
 import numpy as np
 import pandas as pd
+
 from matplotlib import pyplot as plt
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
 
 
-class Perceptron:
-    def __init__(self, letter='None', lr=0.01, epochs=50):
-        self.letter = letter
-        self.lr = lr
-        self.epochs = epochs
-        self.weights = None
-        self.bias = None
-        self.predictions = np.random.rand(1)
+BE = TypeVar('BE', bound=BaseException)
 
-    def train(self, X, y):
-        self.weights = np.random.rand(X.shape[1])
-        self.bias = 0.0
+
+class Perceptron:
+    def __init__(
+        self,
+        *,
+        letter: str = Literal['None'],
+        learning_rate: float = 0.01,
+        epochs: int = 50,
+    ):
+        self.letter: str = letter
+        self.learning_rate: float = learning_rate
+        self.epochs: int = epochs
+        self.predictions: np.ndarray = np.random.rand(1)
+
+    def __enter__(self):
+        self.start_time = time()
+        return self
+
+    def __exit__(
+        self,
+        exc_type: Optional[BE],
+        exc: Optional[BE],
+        traceback: Optional[TracebackType],
+    ) -> None:
+        end_time = time() - self.start_time
+        log.info('Took %s seconds', end_time)
+
+    def train(self, X, y) -> None:
+        self.weights: np.ndarray = np.random.rand(X.shape[1])
+        self.bias: float = 0.0
+
         for _ in range(self.epochs):
             for i in range(X.shape[0]):
                 y_pred = self.predict(X[i])
                 self.predictions += y_pred
                 error = y[i] - y_pred
-                self.weights += self.lr * error * X[i]
-                self.bias += self.lr * error
+                self.weights += self.learning_rate * error * X[i]
+                self.bias += self.learning_rate * error
 
-    def predict(self, x):
-        y_pred = np.dot(x, self.weights) + self.bias
+    def predict(self, array: np.ndarray) -> np.ndarray:
+        y_pred = np.dot(array, self.weights) + self.bias
         return np.where(y_pred > 0, 1, 0)
 
 
 if __name__ == '__main__':
-    P = Perceptron(epochs=50)
+    logging.basicConfig(
+        level=logging.INFO,
+        format='[%(asctime)s] %(levelname)s: %(message)s',
+        datefmt="%Y-%m-%d %H:%M:%S",
+    )
+    log = logging.getLogger(__name__)
 
-    data_train = pd.read_csv('letters/emnist-letters-train.csv', header=None)
-    # Take only data with labels 0
-    letter_a = data_train[data_train.iloc[:, 0] == 1] - 1
-    letter_b = data_train[data_train.iloc[:, 0] == 2] - 1
+    with Perceptron(epochs=50) as P:
 
-    data = pd.concat([letter_a, letter_b])
+        data_train = pd.read_csv('letters/emnist-letters-train.csv', header=None)
+        # Take only data with labels 0
+        letter_a = data_train[data_train.iloc[:, 0] == 1] - 1
+        letter_b = data_train[data_train.iloc[:, 0] == 2] - 1
 
-    train_data, test_data = train_test_split(data, test_size=0.25, random_state=1, shuffle=True)
+        data = pd.concat([letter_a, letter_b])
 
-    # Split datasets into features and labels
-    x_train = train_data.drop(train_data.columns[0], axis=1).to_numpy()
-    x_test = test_data.drop(test_data.columns[0], axis=1).to_numpy()
-    y_train = train_data.iloc[:, 0].to_numpy()
-    y_test = test_data.iloc[:, 0].to_numpy()
+        train_data, test_data = train_test_split(data, test_size=0.25, random_state=1, shuffle=True)
 
-    # Rescale data points to values between 0 and 1 (pixels are originally 0-255)
-    x_train = x_train / 255.
-    x_test = x_test / 255.
+        # Split datasets into features and labels
+        x_train = train_data.drop(train_data.columns[0], axis=1).to_numpy()
+        x_test = test_data.drop(test_data.columns[0], axis=1).to_numpy()
+        y_train = train_data.iloc[:, 0].to_numpy()
+        y_test = test_data.iloc[:, 0].to_numpy()
 
-    print("Starting training, this may take a while......")
-    P.train(x_train, y_train)
-    print("Training is done...")
+        # Rescale data points to values between 0 and 1 (pixels are originally 0-255)
+        x_train = x_train / 255.0
+        x_test = x_test / 255.0
 
-    plt.imshow(np.resize(P.weights, (28, 28)))
-    plt.axis('off')
-    plt.show()
+        log.info('Starting training, this may take a while......')
+        P.train(x_train, y_train)
+        log.info('Training is done...')
 
-    print("Starting predictions....")
-    prediction = P.predict(x_test)
-    print("Prediction is done, dataset was successfully classified.\nReport:\n")
-    report = classification_report(prediction, y_test, digits=6)
-    print(report)
+        plt.imshow(np.resize(P.weights, (28, 28)))
+        plt.axis('off')
+        plt.show()
 
-    print("Displaying confusion matrix...")
+        log.info('Starting predictions....')
+        prediction = P.predict(x_test)
+        log.info('Prediction is done, dataset was successfully classified.\nReport:\n')
+        report = classification_report(prediction, y_test, digits=6)
+        log.info(report)
 
-    cm = confusion_matrix(y_test, prediction)
+        log.info('Displaying confusion matrix...')
 
-    cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[False, True])
-    cm_display.plot()
-    plt.show()
+        cm = confusion_matrix(y_test, prediction)
 
-    data_test = pd.read_csv('letters/emnist-letters-test.csv', header=None)
-    # Take only data with labels 0
-    letter_a = data_test[data_test.iloc[:, 0] == 1] - 1
-    letter_b = data_test[data_test.iloc[:, 0] == 2] - 1
+        cm_display = metrics.ConfusionMatrixDisplay(
+            confusion_matrix=cm, display_labels=[False, True]
+        )
+        cm_display.plot()
+        plt.show()
 
-    validate_data = pd.concat([letter_a, letter_b]).sample(frac=1)
+        data_test = pd.read_csv('letters/emnist-letters-test.csv', header=None)
+        # Take only data with labels 0
+        letter_a = data_test[data_test.iloc[:, 0] == 1] - 1
+        letter_b = data_test[data_test.iloc[:, 0] == 2] - 1
 
-    x_validate = validate_data.drop(validate_data.columns[0], axis=1).to_numpy()
-    y_validate = validate_data.iloc[:, 0].to_numpy()
+        validate_data = pd.concat([letter_a, letter_b]).sample(frac=1)
 
-    print("Starting predictions....")
-    print(y_validate[25])
-    prediction = P.predict(x_validate[25])
-    print(prediction)
-    print("Prediction is done, dataset was successfully classified.\nReport:\n")
-    # report = classification_report(prediction, y_validate, digits=6)
-    # print(report)
-    # print("Displaying confusion matrix...")
-    #
-    # cm = confusion_matrix(y_validate, prediction)
-    #
-    # cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[False, True])
-    # cm_display.plot()
-    # plt.show()
+        x_validate = validate_data.drop(validate_data.columns[0], axis=1).to_numpy()
+        y_validate = validate_data.iloc[:, 0].to_numpy()
+
+        log.info('Starting predictions....')
+        log.info(y_validate[25])
+        prediction = P.predict(x_validate[25])
+        log.info(prediction)
+        log.info('Prediction is done, dataset was successfully classified.\nReport:\n')
+        # report = classification_report(prediction, y_validate, digits=6)
+        # log.info(report)
+        # log.info('Displaying confusion matrix...')
+        #
+        # cm = confusion_matrix(y_validate, prediction)
+        #
+        # cm_display = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[False, True])
+        # cm_display.plot()
+        # plt.show()
