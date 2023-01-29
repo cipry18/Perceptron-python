@@ -20,7 +20,7 @@ for i, l in enumerate(string.ascii_uppercase, start=1):
     letter = data_train[data_train.iloc[:, 0] == i]
     letter.iloc[:, 0] = 1
     letter_2 = data_train[data_train.iloc[:, 0] != i]
-    letter_2 = letter_2.groupby(letter_2.iloc[:, 0]).head(150)
+    letter_2 = letter_2.groupby(letter_2.iloc[:, 0]).head(300)
     letter_2.iloc[:, 0] = 0
 
     letter_all = pd.concat([letter, letter_2]).sample(frac=1)
