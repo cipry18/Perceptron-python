@@ -16,11 +16,11 @@ BE = TypeVar('BE', bound=BaseException)
 
 class Perceptron:
     def __init__(
-            self,
-            *,
-            letter: str = Literal['None'],
-            learning_rate: float = 0.01,
-            epochs: int = 50,
+        self,
+        *,
+        letter: str = Literal['None'],
+        learning_rate: float = 0.01,
+        epochs: int = 50,
     ):
         self.bias = None
         self.weights = None
@@ -34,10 +34,10 @@ class Perceptron:
         return self
 
     def __exit__(
-            self,
-            exc_type: Optional[BE],
-            exc: Optional[BE],
-            traceback: Optional[TracebackType],
+        self,
+        exc_type: Optional[BE],
+        exc: Optional[BE],
+        traceback: Optional[TracebackType],
     ) -> None:
         end_time = time() - self.start_time
         log.info('Took %s seconds', end_time)
