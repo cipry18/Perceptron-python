@@ -65,7 +65,7 @@ Clasa Perceptron are mai multe metode:
 ---------------------
 
 
-Acest cod reprezinta un script de antrenare si testare a unui model de perceptron.
+Acest main reprezinta un script de antrenare si testare a unui model de perceptron.
 
  - In primul rand, se seteaza modul in care datele sunt afisate in log (data, nivelul log-ului, formatul si data).
 
