@@ -60,3 +60,27 @@ Clasa Perceptron are mai multe metode:
  - init: metoda de initializare a clasei care seteaza valori default pentru proprietatile letter, lr (learning rate), epochs, weights, bias, predictions.
  - train: metoda de antrenare a modelului care primeste datele de antrenare X si etichetele y. Initializeaza ponderile si bias-ul cu valori aleatoare. Antreneaza modelul prin repetarea unui numar de epochs si ajustarea ponderilor si a bias-ului in functie de eroarea intre predictia facuta si eticheta reala.
  - predict: metoda de predictie care primeste datele de test x si returneaza o predictie binara (1 sau 0) bazata pe dot product intre ponderi si datele de test plus bias.
+
+### Main:
+---------------------
+
+
+Acest cod reprezinta un script de antrenare si testare a unui model de perceptron.
+
+ - In primul rand, se seteaza modul in care datele sunt afisate in log (data, nivelul log-ului, formatul si data).
+
+ - Se citesc datele de antrenare din fisierul csv 'letters/emnist-letters-train.csv' si se prelucreaza doar datele cu eticheta 1 sau 2, convertindu-le in 0 sau 1.
+
+ - Se impart datele in set de antrenare si set de testare.
+
+ - Se separa datele in feature-uri si label-uri. Feature-urile sunt stocate in x_train si x_test, iar label-urile sunt stocate in y_train si y_test.
+
+ - Se rescaleaza datele de intrare intre 0 si 1.
+
+ - Se antreneaza modelul de perceptron cu datele de antrenare.
+
+ - Se afiseaza weights-urile modeului dupa antrenare.
+
+ - Se fac predictiile pentru datele de testare si se afiseaza un report cu precizia si recall-ul modelului.
+
+ - Se afiseaza si o matrice de confuzie pentru a intelege cum a fost clasificat fiecare punct din setul de testare.
