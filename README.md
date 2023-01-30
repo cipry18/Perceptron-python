@@ -1,8 +1,13 @@
 # Perceptron-python
+Perceptronul este o rețea de neuroni artificiali bazată pe principiul de învățare supervizată. Acesta poate fi folosit pentru clasificarea datelor, inclusiv pentru recunoașterea obiectelor și a imaginilor. Perceptronul ia în considerare un set de date de intrare și încearcă să le îmbine într-un mod care produce cea mai optimă clasificare.
+Acesta poate fi folosit pentru a rezolva probleme de optimizare complexe și poate fi folosit în aplicații cum ar fi recunoașterea vorbirii, recunoașterea imagine și prognozarea afacerilor.
+
+<img src="assets/model perceptron.png" style="background: white" alt="perceptron image">
  
-# Code Review:
+## Code Review main.py
 
 ### Perceptron class:
+
 ---------------------
 ```python
 
@@ -62,6 +67,7 @@ Clasa Perceptron are mai multe metode:
  - predict: metoda de predictie care primeste datele de test x si returneaza o predictie binara (1 sau 0) bazata pe dot product intre ponderi si datele de test plus bias.
 
 ### Main:
+
 ---------------------
 
 
@@ -175,3 +181,51 @@ weighted avg   0.926121  0.925206  0.925224      1698
 Iar ploturile vor fi afisate in felul urmator:  
 <img alt="Weights plotting" height="240" src="assets/myplot_weights.png" width="320"/>
 <img alt="Confusion matrix" height="240" src="assets/myplot_confusion_matrix.png" width="320"/>
+
+
+## Code Review Perceptron_all_char.py
+
+In aceasta varianta a codului a vrut sa se demostreze cum mai multi perceptroni sunt capabili sa se antreneze pe un singur caracter, incercand, asadar sa faca o predictie ulterioara pe un caracter nou.
+
+----
+
+Pentru fiecare literă din alfabetul englezesc (A-Z), se crează un obiect Perceptron, se setează un număr de 100 de epoci și un rate de învățare de 0,01, se preprocesează datele de antrenare prin normalizare (dividerea fiecărei valori cu 255), și se antrenează modelul folosind această date de antrenare. După antrenare, se afișează imaginea greutăților modelului. Toate modelele antrenate sunt apoi adăugate într-o listă de perceptroni.
+
+Apoi, se folosesc toate modelele antrenate pentru a face predicții cu privire la o imagine de testare de literă "F". Se utilizează 30 astfel de imagini de testare și fiecare model de perceptron face o predicție pentru fiecare imagine. Rezultatele predicțiilor sunt colectate într-un dataframe care ține evidența câte predicții pentru fiecare literă au fost făcute. La final, se calculează accuracy-ul modelului prin compararea cu rezultatele așteptate (câte imagini "F" au fost identificate corect).
+
+În final, se afișează un grafic cu numărul total de predicții pentru fiecare literă și se afișează accuracy-ul modelului.
+
+Output:
+
+```commandline
+Starting training for letter A, index 1
+Starting training for letter B, index 2
+Starting training for letter C, index 3
+Starting training for letter D, index 4
+Starting training for letter E, index 5
+Starting training for letter F, index 6
+Starting training for letter G, index 7
+Starting training for letter H, index 8
+Starting training for letter I, index 9
+Starting training for letter J, index 10
+Starting training for letter K, index 11
+Starting training for letter L, index 12
+Starting training for letter M, index 13
+Starting training for letter N, index 14
+Starting training for letter O, index 15
+Starting training for letter P, index 16
+Starting training for letter Q, index 17
+Starting training for letter R, index 18
+Starting training for letter S, index 19
+Starting training for letter T, index 20
+Starting training for letter U, index 21
+Starting training for letter V, index 22
+Starting training for letter W, index 23
+Starting training for letter X, index 24
+Starting training for letter Y, index 25
+Starting training for letter Z, index 26
+The perceptron have an accuracy of 0.3076923076923077 out of 30 samples!
+```
+
+<img src="assets/myplot_bar_chart.png" alt="bar_chart_plot">
+
