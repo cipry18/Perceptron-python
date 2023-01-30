@@ -67,7 +67,7 @@ Clasa Perceptron are mai multe metode:
 
 Acest main reprezinta un script de antrenare si testare a unui model de perceptron.
 
- - In primul rand, se seteaza modul in care datele sunt afisate in log (data, nivelul log-ului, formatul si data).
+ - In primul rand, se seteaza modul in care datele sunt afisate in log (data, nivelul log-ului si formatul).
 
  - Se citesc datele de antrenare din fisierul csv 'letters/emnist-letters-train.csv' si se prelucreaza doar datele cu eticheta 1 sau 2, convertindu-le in 0 sau 1.
 
