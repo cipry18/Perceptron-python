@@ -8,11 +8,11 @@
 
 class Perceptron:
     def __init__(
-            self,
-            *,
-            letter: str = Literal['None'],
-            learning_rate: float = 0.01,
-            epochs: int = 50,
+        self,
+        *,
+        letter: str = Literal['None'],
+        learning_rate: float = 0.01,
+        epochs: int = 50,
     ):
         self.bias = None
         self.weights = None
@@ -26,10 +26,10 @@ class Perceptron:
         return self
 
     def __exit__(
-            self,
-            exc_type: Optional[BE],
-            exc: Optional[BE],
-            traceback: Optional[TracebackType],
+        self,
+        exc_type: Optional[BE],
+        exc: Optional[BE],
+        traceback: Optional[TracebackType],
     ) -> None:
         end_time = time() - self.start_time
         log.info('Took %s seconds', end_time)
@@ -49,4 +49,6 @@ class Perceptron:
     def predict(self, array: np.ndarray) -> np.ndarray:
         y_pred = np.dot(array, self.weights) + self.bias
         return np.where(y_pred > 0, 1, 0)
+
+
 ```
