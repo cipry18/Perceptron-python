@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8c16e294-0c1d-4a8f-b971-a8dbe0c71ea7" name="Changes" comment="modified main.py" />
+    <list default="true" id="8c16e294-0c1d-4a8f-b971-a8dbe0c71ea7" name="Changes" comment="modified README.md, added images (plots)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myplot_confusion_matrix.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myplot_weights.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,17 +23,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/cipri/Documents/GitHub/Perceptron-python/assets/myplot_confusion_matrix.png",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Perceptron-python" />
@@ -67,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1675000241879</updated>
       <workItem from="1675000243144" duration="8029000" />
-      <workItem from="1675092665859" duration="3097000" />
+      <workItem from="1675092665859" duration="5434000" />
     </task>
     <task id="LOCAL-00001" summary="modified perceptron_all_char.py">
       <created>1675000848656</created>
@@ -111,7 +118,63 @@
       <option name="project" value="LOCAL" />
       <updated>1675103856999</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modified README.md">
+      <created>1675104192610</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104192610</updated>
+    </task>
+    <task id="LOCAL-00008" summary="modified main.py">
+      <created>1675104335542</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104335542</updated>
+    </task>
+    <task id="LOCAL-00009" summary="modified README.md">
+      <created>1675104371580</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104371580</updated>
+    </task>
+    <task id="LOCAL-00010" summary="modified README.md">
+      <created>1675104529301</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104529301</updated>
+    </task>
+    <task id="LOCAL-00011" summary="modified README.md">
+      <created>1675104780887</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104780887</updated>
+    </task>
+    <task id="LOCAL-00012" summary="modified README.md">
+      <created>1675104811957</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104811957</updated>
+    </task>
+    <task id="LOCAL-00013" summary="modified README.md">
+      <created>1675104863304</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1675104863304</updated>
+    </task>
+    <task id="LOCAL-00014" summary="modified README.md, added images (plots)">
+      <created>1675106020477</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675106020477</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +195,9 @@
     <MESSAGE value="." />
     <MESSAGE value="modified perceptron_all_char.py" />
     <MESSAGE value="modified main.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified main.py" />
+    <MESSAGE value="modified README.md" />
+    <MESSAGE value="modified README.md, added images (plots)" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified README.md, added images (plots)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Perceptron_python$main.coverage" NAME="main Coverage Results" MODIFIED="1675103787868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

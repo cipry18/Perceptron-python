@@ -151,7 +151,7 @@ plt.show()
 ```
 
 
-asadar rezultatul rularii acestui program va fi:
+Asadar rezultatul rularii acestui program va fi:
 ```commandline
 [2023-01-30 20:36:32] INFO: Starting training, this may take a while......
 [2023-01-30 20:36:43] INFO: Training is done...
@@ -172,4 +172,6 @@ weighted avg   0.926121  0.925206  0.925224      1698
 [2023-01-30 20:36:43] INFO: Took 13.978129148483276 seconds
 ```
 
-iar ploturile vor fi afisate in felul urmator:
+Iar ploturile vor fi afisate in felul urmator:  
+<img alt="Weights plotting" height="240" src="assets/myplot_weights.png" width="320"/>
+<img alt="Confusion matrix" height="240" src="assets/myplot_confusion_matrix.png" width="320"/>
