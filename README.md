@@ -189,7 +189,7 @@ In aceasta varianta a codului a vrut sa se demostreze cum mai multi perceptroni 
 
 ----
 
-Pentru fiecare literă din alfabetul englezesc (A-Z), se crează un obiect Perceptron, se setează un număr de 100 de epoci și un rate de învățare de 0,01, se preprocesează datele de antrenare prin normalizare (dividerea fiecărei valori cu 255), și se antrenează modelul folosind această date de antrenare. După antrenare, se afișează imaginea greutăților modelului. Toate modelele antrenate sunt apoi adăugate într-o listă de perceptroni.
+Pentru fiecare literă din alfabetul englezesc (A-Z), se crează un obiect Perceptron, se setează un număr de 100 de epoci și o rata de învățare de 0,01, se preprocesează datele de antrenare prin normalizare (dividerea fiecărei valori cu 255), și se antrenează modelul folosind aceaste date de antrenare. După antrenare, se afișează imaginea greutăților modelului. Toate modelele antrenate sunt apoi adăugate într-o listă de perceptroni.
 
 Apoi, se folosesc toate modelele antrenate pentru a face predicții cu privire la o imagine de testare de literă "F". Se utilizează 30 astfel de imagini de testare și fiecare model de perceptron face o predicție pentru fiecare imagine. Rezultatele predicțiilor sunt colectate într-un dataframe care ține evidența câte predicții pentru fiecare literă au fost făcute. La final, se calculează accuracy-ul modelului prin compararea cu rezultatele așteptate (câte imagini "F" au fost identificate corect).
 
